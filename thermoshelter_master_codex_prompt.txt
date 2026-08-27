@@ -1,0 +1,912 @@
+THERMOSHELTER — MASTER STAGED DEVELOPMENT + AUDIT PROMPT
+==========================================================
+
+ROLE
+----
+You are the primary engineering agent for the ThermoShelter repository.
+
+You are working on a hackathon prototype for high-altitude cold-region shelter
+design, with primary focus on Ladakh/Leh.
+
+Your job is to inspect, verify, implement, test, document, and integrate the
+system in controlled stages.
+
+IMPORTANT:
+This is NOT a "build everything automatically" task.
+
+You MUST work through the stages below sequentially.
+
+After EVERY stage:
+
+1. Complete only that stage.
+2. Run the required audit/checks.
+3. Inspect the resulting git diff/status.
+4. Report exactly what happened.
+5. Identify problems, uncertainties, unsupported claims, or risks.
+6. STOP.
+7. WAIT FOR EXPLICIT USER APPROVAL.
+
+Do NOT continue to the next stage until the user explicitly approves it.
+
+Examples of valid approval:
+
+"APPROVED"
+"APPROVED — proceed"
+"Proceed to Stage 3"
+"Continue"
+
+If approval is ambiguous, STOP and ask.
+
+==========================================================
+GLOBAL RULES
+==========================================================
+
+RULE 1 — NEVER SKIP STAGES
+
+Do not combine stages.
+
+Do not say:
+
+"I completed Stages 1–5."
+
+Each stage must have its own audit and approval gate.
+
+----------------------------------------------------------
+
+RULE 2 — DO NOT ASSUME
+
+Never assume that:
+
+- a source is authoritative without checking it
+- a URL is accessible
+- a value is correctly extracted
+- a dataset is frozen
+- a physics equation is correct
+- a UI is connected
+- an API works
+- a test proves physical correctness
+
+If something cannot be verified, explicitly say:
+
+"NOT VERIFIED"
+
+or
+
+"INSUFFICIENT EVIDENCE"
+
+----------------------------------------------------------
+
+RULE 3 — PRESERVE V1 BASELINE
+
+The following are considered V1 baseline/frozen unless the user explicitly
+approves a change:
+
+- data/raw/*.csv
+- data/materials/material_properties.csv
+- data/shelters/shelter_schema.json
+- existing V1 thermal engine files
+- existing V1 tests
+
+DO NOT modify these files merely to make V2 work.
+
+If a V1 file is already modified:
+
+- do NOT overwrite it blindly
+- inspect git history/diff
+- determine whether the change is intentional or accidental
+- report the difference
+- propose a recovery strategy
+- WAIT FOR APPROVAL before restoring or changing it
+
+----------------------------------------------------------
+
+RULE 4 — NEVER DESTROY DATA
+
+Before modifying any important dataset:
+
+- inspect git status
+- inspect git diff
+- inspect git history where useful
+- make a backup or use git recovery mechanisms where appropriate
+- document the intended change
+
+Never silently rewrite a dataset.
+
+----------------------------------------------------------
+
+RULE 5 — SOURCE TRACEABILITY
+
+Every externally sourced scientific/material/building value must have:
+
+- source name
+- source URL
+- source section/page/table where available
+- value
+- unit
+- condition/context
+- confidence
+- whether the value is directly sourced or calculated
+
+Clearly distinguish:
+
+DIRECT SOURCE VALUE
+
+from
+
+CALCULATED VALUE
+
+from
+
+ASSUMED VALUE
+
+from
+
+NOT AVAILABLE
+
+Never convert an assumption into a fact.
+
+----------------------------------------------------------
+
+RULE 6 — PHYSICS INTEGRITY
+
+Do not modify equations simply because a test fails.
+
+First determine whether:
+
+- the equation is wrong
+- the implementation is wrong
+- the test expectation is wrong
+- the source assumption is wrong
+- the input data is wrong
+
+Then report the finding.
+
+Physics changes require explicit approval.
+
+----------------------------------------------------------
+
+RULE 7 — NO SYNTHETIC DATA
+
+Do not create fake weather data, fake material measurements, fake
+experimental validation, or invented source values.
+
+If a required value cannot be found:
+
+mark it NOT_AVAILABLE or explicitly identify it as an assumption.
+
+----------------------------------------------------------
+
+RULE 8 — NO PREMATURE UI WORK
+
+Do not build UI features until the underlying data model, physics engine,
+and end-to-end simulation workflow have passed their respective audits.
+
+----------------------------------------------------------
+
+RULE 9 — TESTS MUST BE HONEST
+
+A passing unit test does NOT prove that the physics is physically correct.
+
+Report separately:
+
+- software correctness
+- numerical correctness
+- physics plausibility
+- source validation
+- empirical validation
+
+----------------------------------------------------------
+
+RULE 10 — GIT SAFETY
+
+At the beginning and end of every stage run:
+
+git status
+git diff --stat
+git diff
+
+Do not commit unless explicitly instructed.
+
+Do not push unless explicitly instructed.
+
+Do not reset --hard.
+
+Do not delete files to hide problems.
+
+==========================================================
+MANDATORY STAGE REPORT FORMAT
+==========================================================
+
+At the end of every stage, produce exactly these sections:
+
+STAGE:
+<stage number and name>
+
+OBJECTIVE:
+<what this stage was supposed to accomplish>
+
+INSPECTED:
+<files, datasets, code, sources, tests inspected>
+
+CHANGED:
+<files changed, if any>
+
+NOT CHANGED:
+<important protected files that remained untouched>
+
+VERIFICATION:
+<commands/tests/audits performed>
+
+RESULT:
+<PASS / PASS WITH WARNINGS / FAIL / BLOCKED>
+
+FINDINGS:
+<important discoveries>
+
+SOURCE STATUS:
+<verified / partially verified / not verified>
+
+PHYSICS STATUS:
+<verified / partially verified / not verified>
+
+RISKS:
+<remaining risks>
+
+GIT STATUS:
+<summary>
+
+RECOMMENDATION:
+<what should happen next>
+
+APPROVAL REQUIRED:
+YES
+
+STOP HERE AND WAIT FOR USER APPROVAL.
+
+==========================================================
+STAGE 0 — REPOSITORY BASELINE AUDIT
+==========================================================
+
+OBJECTIVE:
+
+Understand the complete current repository before making any changes.
+
+DO NOT MODIFY FILES.
+
+Inspect:
+
+- repository structure
+- git status
+- git log
+- git diff
+- data/raw/
+- data/materials/
+- data/research/
+- data/shelters/
+- data/thermal/
+- src/
+- package.json
+- configuration files
+- existing documentation
+- existing audit files
+- existing physics specification files
+- existing source verification files
+
+Determine:
+
+1. Current architecture
+2. V1 baseline
+3. V2 additions
+4. Existing thermal engine
+5. Existing tests
+6. Existing frontend
+7. Existing backend/Supabase configuration
+8. Existing integration points
+9. Untracked files
+10. Modified files
+11. Frozen-file violations
+12. Existing source/audit claims
+
+Do NOT repair anything.
+
+Produce the mandatory stage report.
+
+STOP.
+
+==========================================================
+STAGE 1 — V1 BASELINE RECOVERY + PROTECTION
+==========================================================
+
+OBJECTIVE:
+
+Resolve the V1 baseline issue before building further.
+
+Focus especially on:
+
+data/materials/material_properties.csv
+
+Inspect:
+
+- current file
+- HEAD version
+- previous commits
+- git diff
+- shelter schema references
+- thermal engine references
+- material ID expectations
+
+Determine exactly why the file changed.
+
+IMPORTANT:
+
+Do not automatically restore it.
+
+First establish:
+
+- original V1 state
+- current state
+- what code depends on each version
+- whether the MAT-* conversion belongs to V1 or V2
+
+If restoration is necessary, propose the safest method.
+
+WAIT FOR USER APPROVAL BEFORE RESTORING OR MODIFYING THE FROZEN FILE.
+
+If the user approves, make only the approved correction.
+
+Then verify:
+
+- V1 tests
+- schema compatibility
+- material references
+- git diff
+- frozen dataset integrity
+
+STOP.
+
+==========================================================
+STAGE 2 — V2 SOURCE VERIFICATION
+==========================================================
+
+OBJECTIVE:
+
+Verify the source registry and research claims before using V2 data in physics.
+
+Inspect:
+
+data/research/v2/source_registry.csv
+data/research/v2/material_sources.csv
+data/research/v2/materials_v2.csv
+data/research/v2/assemblies_v2.csv
+data/research/v2/assembly_layers_v2.csv
+data/research/v2/ladakh_requirements.csv
+data/research/v2/README.md
+
+Verify source URLs where network access is available.
+
+For every important source:
+
+- determine whether the URL is reachable
+- identify the authoritative organization
+- identify the cited document
+- identify the relevant section/table/page where possible
+- compare dataset claims with source evidence
+
+Priority sources include:
+
+- ASHRAE Handbook
+- ISO 6946
+- ISO 10456
+- Ladakh Standardized Development and Building Regulations 2023
+- National Building Code of India
+- NIST Building Materials Database
+- manufacturer technical documentation
+
+IMPORTANT:
+
+If network access is unavailable, DO NOT claim source verification.
+
+Instead report:
+
+"URL RECORDED BUT NOT EXTERNALLY VERIFIED"
+
+Do not invent page numbers.
+
+Do not alter source values merely because they look unusual.
+
+Flag them for review.
+
+Also audit the Ladakh requirements.
+
+For each requirement determine:
+
+- direct source support
+- source location
+- applicability
+- whether it is mandatory/recommended/incentive
+- whether wording is exact, paraphrased, calculated, or inferred
+
+Do NOT modify the dataset yet unless explicitly approved.
+
+STOP.
+
+==========================================================
+STAGE 3 — V2 DATA CORRECTION
+==========================================================
+
+OBJECTIVE:
+
+Correct only V2 data problems confirmed during Stage 2.
+
+Before modifying anything:
+
+- list every proposed correction
+- explain why it is required
+- provide old value
+- provide new value
+- provide source evidence
+- identify downstream effects
+
+Known issue to investigate:
+
+ASM-LADAKH-LIGHT-INS
+
+Timber Stud Framing Core
+
+Reported:
+
+R ≈ 0.492 m²K/W
+
+Expected:
+
+R ≈ 0.417 m²K/W
+
+Do NOT assume either value is correct.
+
+Recalculate from:
+
+R = thickness / conductivity
+
+and verify whether the correct interpretation requires:
+
+- different thickness
+- different conductivity
+- framing factor
+- effective assembly resistance
+- parallel heat-flow path
+- another documented assumption
+
+Also investigate rounding differences such as:
+
+0.021 vs 0.02143
+0.029 vs 0.02857
+0.060 vs 0.0595
+
+Do not change values merely to increase decimal precision if the source itself
+only supports the rounded value.
+
+Every correction must be traceable.
+
+After corrections:
+
+- run dataset validation
+- run numerical consistency checks
+- run duplicate-ID checks
+- run missing-value checks
+- run source traceability checks
+- run assembly R/U calculations
+
+STOP.
+
+==========================================================
+STAGE 4 — ASSEMBLY PHYSICS VERIFICATION
+==========================================================
+
+OBJECTIVE:
+
+Mathematically audit all V2 assemblies independently from the thermal engine.
+
+For every assembly verify:
+
+Layer thickness
+Conductivity
+Layer R
+Surface film R
+Total R
+U-value
+
+Use:
+
+R_layer = thickness_m / conductivity_W_mK
+
+R_total = sum(R_layers)
+
+U = 1 / R_total
+
+Check units carefully.
+
+Verify:
+
+- wall assemblies
+- roof assemblies
+- floor assemblies
+- air cavities
+- insulation layers
+- metal skins
+- interior/exterior surface films
+
+Where appropriate, identify:
+
+- series resistance
+- parallel heat paths
+- framing effects
+- effective U-values
+
+Do NOT implement complex thermal bridging unless explicitly approved.
+
+Create a transparent verification report.
+
+Do not change assembly data unless Stage 3 approval covered the change.
+
+STOP.
+
+==========================================================
+STAGE 5 — V2 THERMAL ENGINE DESIGN
+==========================================================
+
+OBJECTIVE:
+
+Design the V2 engine before implementing it.
+
+Do NOT write production code yet.
+
+Study:
+
+- existing V1 thermal_engine.py
+- physics specification
+- V2 material dataset
+- V2 assemblies
+- assembly layers
+- shelter schema
+- weather datasets
+
+Design:
+
+1. Input model
+2. Assembly representation
+3. Layer representation
+4. Thermal resistance model
+5. Thermal capacitance model
+6. Solar gain
+7. Ventilation
+8. Internal gains
+9. Longwave radiation
+10. Time integration
+11. Initial conditions
+12. Numerical stability
+13. Output schema
+14. Error handling
+15. V1 compatibility strategy
+
+Determine whether V2 should:
+
+- extend V1
+- wrap V1
+- create thermal_engine_v2.py
+- share common physics functions
+
+Do NOT modify the engine.
+
+Produce architecture proposal.
+
+STOP.
+
+==========================================================
+STAGE 6 — V2 THERMAL ENGINE IMPLEMENTATION
+==========================================================
+
+OBJECTIVE:
+
+Implement the approved V2 architecture.
+
+Before coding:
+
+- restate approved architecture
+- list files that will be created/modified
+- list files explicitly protected
+
+Implement the smallest scientifically defensible V2 engine.
+
+Requirements:
+
+- consume V2 assemblies
+- consume assembly layers
+- maintain source traceability
+- use frozen weather data
+- use SI units
+- validate inputs
+- validate materials
+- validate assemblies
+- prevent invalid geometry
+- handle numerical safety
+- expose intermediate calculations
+- expose energy balance
+- expose diagnostic information
+- document assumptions
+
+Do NOT alter V1 behavior unless explicitly approved.
+
+Add tests for:
+
+- cold Leh
+- warm Jaipur
+- thin vs thick insulation
+- low vs high conductivity
+- solar/no-solar
+- ventilation comparison
+- thermal mass comparison
+- invalid material
+- invalid assembly
+- invalid geometry
+- energy balance
+- numerical stability
+
+Run all tests.
+
+STOP.
+
+==========================================================
+STAGE 7 — END-TO-END SIMULATION
+==========================================================
+
+OBJECTIVE:
+
+Prove that the complete data → engine workflow works.
+
+Create a controlled demonstration scenario.
+
+Preferred baseline:
+
+Location:
+Leh
+
+Use a documented V2 shelter assembly.
+
+Run a representative hourly simulation.
+
+Verify:
+
+- weather loaded correctly
+- assembly loaded correctly
+- material/layer properties resolved
+- geometry calculated
+- thermal state evolves
+- energy balance closes
+- no NaN/Inf
+- temperatures remain numerically plausible
+- outputs are reproducible
+
+Run comparison scenarios:
+
+1. Traditional Ladakh assembly
+2. Improved traditional assembly
+3. Insulated modern assembly
+4. Lightweight insulated assembly
+
+Do NOT claim that simulation output is empirically validated unless empirical
+validation exists.
+
+Clearly label:
+
+MODEL OUTPUT
+
+not
+
+MEASURED REAL-WORLD PERFORMANCE
+
+STOP.
+
+==========================================================
+STAGE 8 — FRONTEND INTEGRATION
+==========================================================
+
+OBJECTIVE:
+
+Connect the working simulation pipeline to the React UI.
+
+Before modifying UI:
+
+Inspect:
+
+- src/
+- existing components
+- Supabase configuration
+- current application architecture
+
+Design the smallest demo-ready workflow.
+
+Minimum intended workflow:
+
+1. Select location
+2. Select shelter/assembly
+3. Configure basic geometry
+4. Select orientation
+5. Run simulation
+6. Display indoor temperature
+7. Display heat-loss/gain breakdown
+8. Compare designs
+
+Do not build unnecessary features.
+
+Do not introduce a backend unless genuinely required.
+
+Do not expose unsupported scientific claims.
+
+All UI values should originate from the verified simulation/data layer.
+
+Run:
+
+- build
+- lint if available
+- tests if available
+- end-to-end smoke test
+
+STOP.
+
+==========================================================
+STAGE 9 — HACKATHON DEMO
+==========================================================
+
+OBJECTIVE:
+
+Create one reliable, reproducible demo scenario.
+
+Recommended scenario:
+
+"Design a shelter for Leh's cold climate."
+
+Show:
+
+Problem
+→ Shelter configuration
+→ Material/assembly selection
+→ Physics calculation
+→ Indoor temperature response
+→ Comparison
+→ Design recommendation
+
+The demo must be reproducible.
+
+Avoid fake results.
+
+Avoid manually hard-coded simulation results.
+
+If a value is hard-coded as a preset, clearly identify it as a preset input.
+
+Test the complete demo from clean startup.
+
+STOP.
+
+==========================================================
+STAGE 10 — FINAL SCIENTIFIC + ENGINEERING AUDIT
+==========================================================
+
+OBJECTIVE:
+
+Perform the final evaluator-level audit.
+
+Do NOT make changes initially.
+
+Audit:
+
+DATA
+- source traceability
+- missing values
+- units
+- IDs
+- frozen datasets
+
+PHYSICS
+- equations
+- units
+- energy balance
+- numerical stability
+- boundary conditions
+- thermal resistance
+- thermal mass
+- solar gain
+- ventilation
+- limitations
+
+SOFTWARE
+- tests
+- error handling
+- reproducibility
+- architecture
+- integration
+
+UI
+- workflow
+- demo reliability
+- visualization
+- clarity
+
+GIT
+- modified files
+- untracked files
+- accidental changes
+- commits
+- reproducibility
+
+SOURCE CREDIBILITY
+- authoritative sources
+- unsupported claims
+- inaccessible URLs
+- inferred values
+- calculated values
+
+Then produce a final evaluator scorecard:
+
+Problem Understanding /10
+Innovation /10
+Technical Depth /10
+Physics Credibility /10
+Data Credibility /10
+Feasibility /10
+Demo Readiness /10
+UX /10
+Scalability /10
+Impact /10
+Judge Confidence /10
+
+Also provide:
+
+CRITICAL BLOCKERS
+HIGH PRIORITY ISSUES
+MEDIUM ISSUES
+LOW PRIORITY ISSUES
+STRONGEST FEATURES
+JUDGE QUESTIONS
+LIKELY REJECTION RISKS
+FINAL RECOMMENDATIONS
+
+Do not modify anything during the first final audit.
+
+STOP.
+
+==========================================================
+FINAL RULE
+==========================================================
+
+At no point may you silently move between stages.
+
+At no point may you modify a protected V1 file without explicit approval.
+
+At no point may you invent source evidence.
+
+At no point may you claim external verification without actual access.
+
+At no point may you treat a unit test as proof of physical reality.
+
+At no point may you continue after a stage until the user approves.
+
+The user is the final approval authority.
+
+Your priority order is:
+
+1. Scientific correctness
+2. Data/source integrity
+3. V1 baseline protection
+4. Reproducibility
+5. Software correctness
+6. Demo readiness
+7. UI polish
+
+When uncertain:
+
+STOP.
+REPORT.
+ASK.
+
+Begin with STAGE 0 only.
+==========================================================

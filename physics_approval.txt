@@ -1,0 +1,30 @@
+Approved with these additional constraints:
+
+1. Prefer Python standard library where practical. Use pandas only where it materially simplifies CSV/data handling. Do not add unnecessary dependencies.
+
+2. For surface/long-wave radiation, do not invent precise physical values. Any simplified coefficient, sky-temperature assumption, or radiation approximation must be explicitly documented with its source or clearly labeled as a V1 engineering assumption.
+
+3. Add explicit directional physics sanity tests:
+   - Increasing wall thickness should generally reduce conductive heat transfer.
+   - Increasing thermal conductivity should generally increase conductive heat transfer.
+   - Increasing solar absorptivity should generally increase solar gain.
+   - Increasing ventilation should generally increase outdoor/indoor thermal coupling.
+   - Increasing thermal mass should generally slow indoor temperature response.
+
+4. Verify units and dimensional consistency for every major equation.
+
+5. Do not modify any frozen files.
+
+6. Do not modify React, Supabase, ML, or unrelated project files.
+
+7. Do not generate synthetic weather data.
+
+8. After implementation, show me:
+   - files created
+   - equations implemented
+   - assumptions
+   - test results
+   - physics sanity-check results
+   - any limitations or concerns
+
+Proceed with implementation only after applying these constraints.

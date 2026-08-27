@@ -1,0 +1,56 @@
+REPLACEMENT AUDIT
+CURRENT STATE: 
+Current repository at C:\Hackathon\thermoshelter
+Backup at C:\Hackathon\thermoshelter_backup
+
+FILES ADDED:
+(none)
+
+FILES REMOVED:
+(none)
+
+FILES CHANGED:
+data\materials\material_properties.csv
+data\research\v2\materials_v2.csv
+data\research\v2\source_registry.csv
+data\thermal\thermal_engine.py
+
+V1 BASELINE STATUS:
+V1 material dataset has changed. Current first 5 lines:
+material_id,material,material_category,thermal_conductivity_W_mK,density_kg_m3,specific_heat_J_kgK,thermal_emissivity,solar_absorptivity,solar_reflectivity,default_thickness_mm,thermal_resistance_m2K_W,source,source_url,source_condition,confidence,notes
+1,Adobe/Mud brick,Earthen construction,0.7,1800,920,0.9,0.75,0.25,250,0.357,"ASHRAE Handbook 2025 - Chapter 26","https://handbook.ashrae.org/Handbooks/F25/SI/F25_Ch26/F25_Ch26_si.aspx","Typical adobe at 5% moisture content","High","Value for typical adobe brick; range 0.5-1.0 W/mK depending on soil composition and moisture"
+2,Rammed earth,Earthen construction,1.5,2000,920,0.9,0.7,0.3,300,0.2,"ASHRAE Handbook 2025 - Chapter 26","https://handbook.ashrae.org/Handbooks/F25/SI/F25_Ch26/F25_Ch26_si.aspx","Stabilized rammed earth (5% cement)","High","Thermal resistance calculated as thickness/conductivity = 0.3m/1.5 W/mK = 0.2 m²K/W"
+3,Stone masonry (granite),Masonry,2.5,2700,790,0.9,0.6,0.4,350,0.14,"ASHRAE Handbook 2025 - Chapter 26","https://handbook.ashrae.org/Handbooks/F25/SI/F25_Ch26/F25_Ch26_si.aspx","Dry granite","High","Thermal resistance calculated as thickness/conductivity = 0.35m/2.5 W/mK = 0.14 m²K/W"
+4,Brick masonry (clay brick),Masonry,0.7,1800,840,0.9,0.6,0.4,230,0.329,"ASHRAE Handbook 2025 - Chapter 26","https://handbook.ashrae.org/Handbooks/F25/SI/F25_Ch26/F25_Ch26_si.aspx","Common clay brick","Medium","Thermal resistance calculated as thickness/conductivity = 0.23m/0.7 W/mK = 0.329 m²K/W"
+
+CODE CONSISTENCY:
+data\thermal\thermal_engine.py: changed
+data\thermal\test_thermal_engine.py: unchanged
+src\lib\supabase.ts: unchanged
+
+DATA CONSISTENCY:
+data\research\v2\source_registry.csv: changed
+data\research\v2\materials_v2.csv: changed
+data\shelters\shelter_schema.json: unchanged
+
+BUILD/TEST STATUS:
+package.json present
+test_thermal_engine.py present
+
+CRITICAL ISSUES:
+V1 material dataset changed (potential violation of frozen baseline).
+
+NON-CRITICAL ISSUES:
+4 files changed (excluding critical ones listed above)
+
+WHAT IS SAFE
+Not safe due to critical issues listed above.
+
+WHAT IS NOT SAFE
+Critical issues as listed above may render the repository unsafe for further development without resolution.
+
+RECOMMENDED NEXT STEP
+Resolve critical issues before proceeding. Do not modify frozen V1 data inadvertently.
+
+RESULT: 
+FAIL

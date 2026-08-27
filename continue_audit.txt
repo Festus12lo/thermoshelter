@@ -1,0 +1,14 @@
+You are now in the ThermoShelter repository at C:\Hackathon\thermoshelter.
+
+Continue the previously started V2 research source audit.
+Do NOT restart completed work.
+Do NOT modify any files.
+
+First inspect the existing audit artifacts and continue from where the previous agent stopped.
+
+Focus only on verifying:
+data/research/v2/ladakh_requirements.csv
+
+against the Ladakh Standardized Development and Building Regulations 2023 PDF already available in the existing audit artifacts.
+
+Return the final verification report only.

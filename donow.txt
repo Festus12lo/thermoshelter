@@ -1,0 +1,49 @@
+Do not modify any files. Do not restore anything. Do not delete the backup.
+
+Perform a forensic comparison between:
+
+C:\Hackathon\thermoshelter
+
+and
+
+C:\Hackathon\thermoshelter_backup
+
+Specifically investigate why data/materials/material_properties.csv is reported as changed.
+
+Compare the files byte-for-byte and also compare normalized CSV content while ignoring:
+
+LF vs CRLF line endings
+final newline differences
+file timestamps
+
+Report exactly which fields/lines/bytes differ.
+
+Then compare the current material_properties.csv against the Git baseline at commit a59c788.
+
+Determine which of these is true:
+
+The current file contains actual material-data changes.
+The current file is identical in content but differs only in formatting/line endings.
+The backup contains a different version.
+The Git baseline and backup disagree.
+
+Do not fix anything yet.
+
+Run the relevant tests only if they are read-only.
+
+Produce:
+
+EXACT DIFFERENCES
+BASELINE COMPARISON
+BACKUP COMPARISON
+SCIENTIFIC DATA DIFFERENCES
+FILE/FORMAT DIFFERENCES
+RISK
+RECOMMENDATION
+RESULT: PASS or FAIL
+
+STOP and wait for my approval after the report.
+
+That's the right move.
+
+Do not approve the current FAIL. We first need to know why that CSV is being flagged.

@@ -1,0 +1,40 @@
+Perform a READ-ONLY physics equation audit of the V1 thermal engine.
+
+Do NOT modify any files.
+
+Open data/thermal/thermal_engine.py and report the actual equations implemented.
+
+For each equation, show:
+
+1. Conductive heat transfer through walls, roof and floor
+2. Thermal mass / heat-capacity calculation
+3. Solar heat gain
+4. Ventilation heat transfer
+5. Internal occupant heat gain
+6. Long-wave surface radiation
+7. Hourly indoor-temperature update equation
+8. Any heat-transfer coefficients or assumptions used
+
+For every equation provide:
+- Mathematical form
+- Variables
+- SI units
+- Where each input comes from
+- Whether it is directly source-backed or a V1 engineering assumption
+
+Then perform dimensional/unit checks on the equations.
+
+Also verify these physical behaviors:
+- Higher wall thickness -> lower conductive heat transfer
+- Higher conductivity -> higher conductive heat transfer
+- Higher solar absorptivity -> higher solar gain
+- Higher ventilation -> stronger outdoor temperature coupling
+- Higher thermal mass -> slower indoor temperature response
+
+Finally identify:
+- Any physics implementation that may be questionable
+- Any potentially double-counted heat transfer
+- Any unrealistic assumption particularly relevant to Leh/Ladakh
+- Any equation that should be changed before using the engine for the prototype
+
+READ ONLY. DO NOT MODIFY ANY FILE.

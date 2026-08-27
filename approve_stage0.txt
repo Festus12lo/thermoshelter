@@ -1,0 +1,24 @@
+APPROVED.
+
+Proceed with Stage 0B – V1 Baseline Forensic Recovery exactly as instructed.
+
+You have approval ONLY to investigate and report.
+
+DO NOT:
+- modify any files
+- delete any files
+- restore/revert any files
+- commit anything
+- change the working tree
+
+Perform the Git history, dependency, schema, thermal-engine, and source-verification investigation.
+
+After completing Stage 0B:
+1. Run the required audit/checks.
+2. Inspect git status and git diff.
+3. Report exactly what was found.
+4. Clearly separate verified facts from assumptions.
+5. Recommend the safest option.
+6. STOP and wait for my next approval.
+
+Do NOT proceed to Stage 1.
