@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "ui-skills": {
+      "serverUrl": "https://www.ui-skills.com/mcp"
+    },
+    "stitch": {
+      "serverUrl": "https://stitch.googleapis.com/mcp",
+      "headers": {
+        "X-Goog-Api-Key": "YOUR_API_KEY_HERE"
+      }
+    }
+  }
+}

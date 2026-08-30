@@ -10,5 +10,8 @@
     "MAT-ROCKWOOL":  "10",
     "MAT-TIMBER":  "6",
     "MAT-BAMBOO":  "7",
-    "MAT-XPS":  "12"
+    "MAT-XPS":  "12",
+    "MAT-AAC": "13",
+    "MAT-WOOL": "14",
+    "MAT-STRAWCLAY": "15"
 }
