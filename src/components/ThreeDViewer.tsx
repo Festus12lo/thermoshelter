@@ -277,7 +277,7 @@ export const ThreeDViewer: React.FC<ThreeDViewerProps> = (props) => {
   ];
 
   return (
-    <div className="relative w-full h-[500px] bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-2xl">
+    <div className="relative w-full h-full bg-[#0a0a0a] overflow-hidden">
       <div className="absolute top-4 right-4 z-10 flex gap-2">
         {presets.map(p => (
           <button key={p.key} type="button" className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${activePreset === p.key ? 'bg-cyan-500 text-white shadow-[0_0_10px_rgba(6,182,212,0.4)]' : 'bg-slate-800/80 text-slate-400 hover:bg-slate-700 hover:text-white'}`} onClick={() => setActivePreset(p.key)}>

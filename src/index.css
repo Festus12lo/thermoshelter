@@ -3,32 +3,154 @@
 @source "../src";
 
 @theme {
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body-md: 'Inter', sans-serif;
+  --font-display-xl: 'Geist', sans-serif;
+  --font-label-sm: 'Inter', sans-serif;
+  
   --color-main: #0b0f19;
   --color-card: #131b2e;
   --color-card-hover: #19233c;
   --color-border: #23314f;
-  --color-primary: #3b82f6;
-  --color-primary-glow: rgba(59, 130, 246, 0.25);
-  --color-accent-gold: #f59e0b;
-  --color-accent-cyan: #06b6d4;
-  --color-accent-green: #10b981;
-  --color-accent-red: #ef4444;
+  
+  --color-surface-container-low: #111c2d;
+  --color-primary-fixed: #dae2fd;
+  --color-tertiary: #b7c8e1;
+  --color-surface: #081425;
+  --color-on-tertiary: #213145;
+  --color-inverse-on-surface: #263143;
+  --color-error-container: #93000a;
+  --color-surface-container-highest: #2a3548;
+  --color-tertiary-fixed: #d3e4fe;
+  --color-surface-variant: #2a3548;
+  --color-secondary-fixed-dim: #ffb690;
+  --color-inverse-primary: #565e74;
+  --color-secondary-fixed: #ffdbca;
+  --color-primary-fixed-dim: #bec6e0;
+  --color-outline-variant: #45464d;
+  --color-primary-container: #0f172a;
+  --color-on-primary-fixed-variant: #3f465c;
+  --color-error: #ffb4ab;
+  --color-surface-tint: #bec6e0;
+  --color-on-primary: #283044;
+  --color-secondary-container: #ec6a06;
+  --color-on-background: #d8e3fb;
+  --color-tertiary-container: #06182b;
+  --color-tertiary-fixed-dim: #b7c8e1;
+  --color-on-error-container: #ffdad6;
+  --color-on-surface-variant: #c6c6cd;
+  --color-on-primary-fixed: #131b2e;
+  --color-surface-dim: #081425;
+  --color-on-secondary-container: #4a1c00;
+  --color-on-secondary-fixed: #341100;
+  --color-primary: #bec6e0;
+  --color-background: #081425;
+  --color-on-secondary: #552100;
+  --color-secondary: #ffb690;
+  --color-outline: #909097;
+  --color-surface-bright: #2f3a4c;
+  --color-inverse-surface: #d8e3fb;
+  --color-surface-container-high: #1f2a3c;
+  --color-surface-container: #152031;
+  --color-on-tertiary-fixed: #0b1c30;
+  --color-on-secondary-fixed-variant: #783200;
+  --color-on-primary-container: #798098;
+  --color-on-error: #690005;
+  --color-surface-container-lowest: #040e1f;
+  --color-on-tertiary-fixed-variant: #38485d;
+  --color-on-surface: #d8e3fb;
+  --color-on-tertiary-container: #728299;
+
+  /* Custom Spacing */
+  --spacing-gutter: 24px;
+  --spacing-container-mobile: 20px;
+  --spacing-container-desktop: 40px;
+  --spacing-unit: 8px;
+  --spacing-section-gap: 64px;
+
+  /* Custom Fonts */
+  --font-display-lg: 'Inter', sans-serif;
+  --font-headline-lg: 'Inter', sans-serif;
+  --font-headline-md: 'Inter', sans-serif;
+  --font-headline-lg-mobile: 'Inter', sans-serif;
+  --font-body-lg: 'Inter', sans-serif;
+  --font-body-md: 'Inter', sans-serif;
+  --font-label-caps: 'JetBrains Mono', monospace;
+  --font-data-point: 'JetBrains Mono', monospace;
+  
+  /* Animations */
+  --animate-fade-in-up: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 :root {
   --bg-main: var(--color-main);
   --bg-card: var(--color-card);
   --border-color: var(--color-border);
+
+  /* ThermoShelter Dynamic Theme Variables */
+  --theme-bg-main: #0B1221;
+  --theme-bg-sidebar: #121B2A;
+  --theme-bg-card: #1C2538;
+  --theme-bg-well: #070D19;
+  --theme-border-card: rgba(255, 255, 255, 0.05);
+  --theme-border-well: transparent;
+
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
 }
 
+.theme-matte {
+  --theme-bg-main: #0a0a0a;
+  --theme-bg-sidebar: #000000;
+  --theme-bg-card: #121212;
+  --theme-bg-well: #050505;
+  --theme-border-card: rgba(255, 255, 255, 0.1);
+  --theme-border-well: rgba(255, 255, 255, 0.05);
+}
+
+.theme-vibrant {
+  --theme-bg-main: transparent;
+  --theme-bg-sidebar: rgba(20, 10, 40, 0.4);
+  --theme-bg-card: rgba(255, 255, 255, 0.04);
+  --theme-bg-well: rgba(0, 0, 0, 0.3);
+  --theme-border-card: rgba(45, 212, 191, 0.3); /* Cyan accent border */
+  --theme-border-well: rgba(236, 160, 120, 0.3); /* Peach accent border */
+}
+
+/* Vibrant Animated Background */
+.theme-vibrant::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 15% 50%, rgba(45, 212, 191, 0.25), transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(236, 160, 120, 0.25), transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(139, 92, 246, 0.3), transparent 60%);
+  background-color: #0b0514;
+  animation: pulse-glow 10s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% { opacity: 0.8; }
+  100% { opacity: 1.2; }
+}
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
@@ -38,6 +160,47 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Custom UI Utilities from Stitch & Polishing */
+@utility text-display-lg {
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+@utility text-headline-lg {
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+@utility text-headline-md {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+@utility text-body-md {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+@utility text-label-caps {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+@utility text-data-point {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
 }
 
 /* Custom scrollbar */
@@ -54,4 +217,10 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #334155;
+}
+
+/* Flat UI specific utilities */
+@utility text-xxs {
+  font-size: 10px;
+  line-height: 14px;
 }

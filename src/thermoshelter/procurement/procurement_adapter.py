@@ -159,7 +159,7 @@ class ProcurementAdapter:
             provenance_notes.append(f"Wall cost based on observed price from {wall_rec.supplier_name} ({wall_rec.price_per_unit} {wall_rec.currency}/{wall_rec.price_unit}).")
         else:
             is_observed = False
-            breakdown['wall'] = round(wall_area_m2 * 25.0, 2)  # Synthetic fallback heuristic ($25/m2)
+            breakdown['wall'] = round(wall_area_m2 * 2000.0, 2)  # Synthetic fallback heuristic (₹2000/m2)
             total += breakdown['wall']
             provenance_notes.append(f"Wall cost uses SYNTHETIC_ESTIMATE (no observed market price).")
 
@@ -173,7 +173,7 @@ class ProcurementAdapter:
             provenance_notes.append(f"Roof cost based on observed price from {roof_rec.supplier_name} ({roof_rec.price_per_unit} {roof_rec.currency}/{roof_rec.price_unit}).")
         else:
             is_observed = False
-            breakdown['roof'] = round(roof_area_m2 * 35.0, 2)  # Synthetic fallback heuristic ($35/m2)
+            breakdown['roof'] = round(roof_area_m2 * 2500.0, 2)  # Synthetic fallback heuristic (₹2500/m2)
             total += breakdown['roof']
             provenance_notes.append(f"Roof cost uses SYNTHETIC_ESTIMATE (no observed market price).")
 

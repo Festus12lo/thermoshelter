@@ -77,7 +77,7 @@ class LLMExplanationEngine:
         cost_rationale = "Cost rationale unavailable."
         if estimated_cost:
             total = estimated_cost.get('total_cost', 0)
-            curr = estimated_cost.get('currency', 'USD')
+            curr = estimated_cost.get('currency', 'INR')
             obs = estimated_cost.get('is_observed_price', False)
             cost_rationale = (f"The estimated envelope cost is {total:.2f} {curr}. "
                               f"This is based on {'OBSERVED MARKET PRICES' if obs else 'SYNTHETIC ESTIMATES'}.")

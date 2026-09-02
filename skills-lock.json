@@ -7,6 +7,18 @@
       "skillPath": "skills/3d-web-experience/SKILL.md",
       "computedHash": "ece6cc650690490b73b5fbe5870a0f9a83db1143720b0a7567d7c34a33a88787"
     },
+    "academy-guide": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/academy-guide/SKILL.md",
+      "computedHash": "3850fdb589a7a5ba8c3fc5610b43751fef339ba8569a106e316a3b199f6426bc"
+    },
+    "agent-md-refactor": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/agent-md-refactor/SKILL.md",
+      "computedHash": "11d1ffbb2d9f180d63dabfb0b6c63a4632b4c0e2e6be1660c7651cef0f3f1c07"
+    },
     "agentcad": {
       "source": "jdilla1277/agentcad-skill",
       "sourceType": "github",
@@ -25,6 +37,18 @@
       "skillPath": "ai-product-development/SKILL.md",
       "computedHash": "07f341733064849e942e0cdc481763f858781e11ad62a31047cf6e913f0f281e"
     },
+    "algorithmic-art": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/algorithmic-art/SKILL.md",
+      "computedHash": "987b24aa98171a0d3690420173b2cdb6eaafd57981ed716b5d50371affa82ea3"
+    },
+    "backend-to-frontend-handoff-docs": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/backend-to-frontend-handoff-docs/SKILL.md",
+      "computedHash": "7c43829a6f1731fca5bd4f4341254016fff31b4130c3208b2e9f0dce2660283d"
+    },
     "bambu-labs": {
       "source": "earthtojake/text-to-cad",
       "sourceType": "github",
@@ -36,6 +60,18 @@
       "sourceType": "github",
       "skillPath": "SKILL.md",
       "computedHash": "2fc22cd298e339dbcfd76c29b55935c7719e186aec91e6aa36856a26dd7f7359"
+    },
+    "brand-guidelines": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/brand-guidelines/SKILL.md",
+      "computedHash": "c82f0b24cdcc7e2693a963d30c810558b7bb89ed84508b2328228d21256ef865"
+    },
+    "c4-architecture": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/c4-architecture/SKILL.md",
+      "computedHash": "9192b5d6be529478a70d1a73f3d4ce83db12c2052c4e6df4accd445f21e906d4"
     },
     "cad": {
       "source": "earthtojake/text-to-cad",
@@ -49,11 +85,35 @@
       "skillPath": "skills/cad-viewer/SKILL.md",
       "computedHash": "205365b8c182a799e6683efa0908887b9ae6f77aac4c5e5b75aee040a38fea38"
     },
+    "canvas-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/canvas-design/SKILL.md",
+      "computedHash": "4e8bbc31d3b159efdd32d31a63ba8cd5a44d84911e924c1f2c709c50cbcdd0ec"
+    },
     "claude-api": {
       "source": "anthropics/skills",
       "sourceType": "github",
       "skillPath": "skills/claude-api/SKILL.md",
       "computedHash": "2361f849f5344780bb46ce5a6c56732998aea349d5a9e13f8fe525dded0b47fe"
+    },
+    "codex": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/codex/SKILL.md",
+      "computedHash": "36d06fc81796999e18ca611c03ff7787c618a7ea744761093995962e147ccdf7"
+    },
+    "command-creator": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/command-creator/SKILL.md",
+      "computedHash": "0808dd1c7ddc68f07c072e090d1864decda125ce6dbdfc5122e6477eb1428fb8"
+    },
+    "commit-work": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/commit-work/SKILL.md",
+      "computedHash": "c9362cbf8d20af2fba1789a57c27e94cf063c0cbe659f40898d31d2afa3b1cb8"
     },
     "composio": {
       "source": "composiohq/skills",
@@ -61,11 +121,47 @@
       "skillPath": "skills/composio/SKILL.md",
       "computedHash": "b6c3b70c8d2f122bf372a0566c520d2f70a230f2e6072f45d005208a4d220e3a"
     },
+    "crafting-effective-readmes": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/crafting-effective-readmes/SKILL.md",
+      "computedHash": "cb11facecbb4a15f7ca6cfac2e740ac66798676c246c057879a71babb27c9a4f"
+    },
+    "daily-meeting-update": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/daily-meeting-update/SKILL.md",
+      "computedHash": "a01be54c92bdfd8aa40ce77e7ff168531fe43543319850b8dc5824fd568fc68d"
+    },
     "data-analyst": {
       "source": "cline/skills",
       "sourceType": "github",
       "skillPath": "skills/data-analyst/SKILL.md",
       "computedHash": "9d2cf7e0b826da5a2e38e982d708d6e6af2048145c614eadc84525965328c7b8"
+    },
+    "database-schema-designer": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/database-schema-designer/SKILL.md",
+      "computedHash": "f23c909d45c6207e974dbce0db4c648de13d586abb37057cfec34d62f25bb526"
+    },
+    "datadog-cli": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/datadog-cli/SKILL.md",
+      "computedHash": "11b87a7b2610755693e0d21aa626c96ec536daa869c6f178ccfb170bfba404d6"
+    },
+    "dependency-updater": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/dependency-updater/SKILL.md",
+      "computedHash": "3fc648ed28dfce104c7749318489af2c388de99dde2d85c145a4e028d994db41"
+    },
+    "design-system-starter": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/design-system-starter/SKILL.md",
+      "computedHash": "e6df3b8d53a8333f44db1da91a10570488e46c3aea899476875aad894858a3b0"
     },
     "dfam-check": {
       "source": "earthtojake/text-to-cad",
@@ -73,11 +169,77 @@
       "skillPath": "skills/dfam-check/SKILL.md",
       "computedHash": "5d1397593ec2b8c3893019b4a3f7efb88822b379f7222b5eb144a2549fd089c9"
     },
+    "difficult-workplace-conversations": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/difficult-workplace-conversations/SKILL.md",
+      "computedHash": "e37c79cdcb3569a3f2c2eb875d993c495c6313165036d75b9b2fa5f117d802b2"
+    },
+    "discernment-nudge": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/discernment-nudge/SKILL.md",
+      "computedHash": "80db132d056a73d1ff7b209c4fba8e414285ff20ccc2d3e9e6803e6283b3b931"
+    },
+    "doc-coauthoring": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/doc-coauthoring/SKILL.md",
+      "computedHash": "62cd7744438ee2aecc986c520bb603988a78ff6aaaf70a471bf4584fe0b78dae"
+    },
+    "docx": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/docx/SKILL.md",
+      "computedHash": "3b8f8cf1ca7a427607c78312655e95e21b5f8f2b06a1aad4dc5554cc90eb095c"
+    },
+    "domain-name-brainstormer": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/domain-name-brainstormer/SKILL.md",
+      "computedHash": "d8cdaa1279f4447fdd766bed9a566346ff2e72db822b4b3695fe033701903af6"
+    },
+    "draw-io": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/draw-io/SKILL.md",
+      "computedHash": "f7318f5fd5207c3386eea323fe83398a6f126bb662b373e168566dc39470cb01"
+    },
     "dxf": {
       "source": "earthtojake/text-to-cad",
       "sourceType": "github",
       "skillPath": "skills/dxf/SKILL.md",
       "computedHash": "77386d29e4ebb694a88000430a030390434985a8e8dd85cdf9b20c45c669a79f"
+    },
+    "excalidraw": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/excalidraw/SKILL.md",
+      "computedHash": "f7d76efd72bebb97e2a398cd7fe2924927fcdab24d586bda2fcc867396b740c0"
+    },
+    "feedback-mastery": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/feedback-mastery/SKILL.md",
+      "computedHash": "29e2af48dc587059f389287ae51ba0ecd7b9c853223ddb9f679834edd91e5cae"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "93f53fd1c0352d3d7ec17b8f73d7351bf76f4821e55d123c9d2abc2c53ba48e4"
+    },
+    "frontend-to-backend-requirements": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-to-backend-requirements/SKILL.md",
+      "computedHash": "8c887221cfcf9f4cf25a8acc72798e911e0ce1c952f99fe75ed5b2554b48ea40"
+    },
+    "game-changing-features": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/game-changing-features/SKILL.md",
+      "computedHash": "957248a5654c01fe82186b4b31199b0c618a9375c1d0024fd66568afbe12c48f"
     },
     "gcode": {
       "source": "earthtojake/text-to-cad",
@@ -85,11 +247,149 @@
       "skillPath": "skills/gcode/SKILL.md",
       "computedHash": "5dab4e8dd207e0381ecdaaac46010931e8defdc5eedd2a48baf146467d481c05"
     },
+    "gemini": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/gemini/SKILL.md",
+      "computedHash": "feed23504518537af26b18b25ea80ea1ceb6d06084b1deeb3784d63ed151e6b4"
+    },
+    "gepetto": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/gepetto/SKILL.md",
+      "computedHash": "76fa67fd2eac92fd8d4d22be2adaff981791f2009248b1813db9a8e0ab245dd8"
+    },
+    "humanizer": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/humanizer/SKILL.md",
+      "computedHash": "c948e831d5fdfbe2e1fbbba1ebf8ab410a8f077ba529ddd522fd9ae40e6cc653"
+    },
     "implicit-cad": {
       "source": "earthtojake/text-to-cad",
       "sourceType": "github",
       "skillPath": "skills/implicit-cad/SKILL.md",
       "computedHash": "f88f8f0fafdf97d5a0c3b188470e8ebaeedf9b65bb1da323ff8ab53bce6571eb"
+    },
+    "internal-comms": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/internal-comms/SKILL.md",
+      "computedHash": "cf3dba93fd569d7380505db211f89a467869c1a2ef301941148d06f33ed17332"
+    },
+    "jira": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/jira/SKILL.md",
+      "computedHash": "8977d5956e0254ddef59889758353c28f919853ddb13c3b34be018a799154c4c"
+    },
+    "lesson-learned": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/lesson-learned/SKILL.md",
+      "computedHash": "58e2a4062f3f113177658ef822dfc52ca10997a41b71098a6ae809b8f5ab316c"
+    },
+    "marp-slide": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/marp-slide/SKILL.md",
+      "computedHash": "73f1da9e6938b404525a6e33fb19033dcda3358a79d5b9aeecde73a13c049831"
+    },
+    "mcp-builder": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/mcp-builder/SKILL.md",
+      "computedHash": "6498a736a8dc5c645047c8a875b8ea7417e2ad97146f005200e50d20a9337ada"
+    },
+    "meme-factory": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/meme-factory/SKILL.md",
+      "computedHash": "a746b66da0219bd23de2a91ed5a21d2e951b92a56d89dd0193866950e927589f"
+    },
+    "mermaid-diagrams": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/mermaid-diagrams/SKILL.md",
+      "computedHash": "b6c206a3cab0333a1d3d3cf27114099d0d5f25eb07d86c8f12472b7aa7d59a4c"
+    },
+    "mui": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/mui/SKILL.md",
+      "computedHash": "363bda5252637c682d30907de02efe538abc42843d1d20624d1e5e35823e996c"
+    },
+    "naming-analyzer": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/naming-analyzer/SKILL.md",
+      "computedHash": "0200d6f4b2edfe342c255c49f9c46b0937c079899f3c5255c2a624686777ca51"
+    },
+    "openapi-to-typescript": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/openapi-to-typescript/SKILL.md",
+      "computedHash": "703ab2a30b2113c9c18bf7982905c0b0f711f7476128ce30aa086585476af277"
+    },
+    "pdf": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pdf/SKILL.md",
+      "computedHash": "37226d4220d844377e6b2a386c51a011df4cd130855ff0b80bcc22f9c28abd57"
+    },
+    "perplexity": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/perplexity/SKILL.md",
+      "computedHash": "1d32fbce001646737afa8208adaae6e8b1b6c74bd85eae492a9b89901e8c1668"
+    },
+    "plugin-forge": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/plugin-forge/SKILL.md",
+      "computedHash": "6b8eaac56d39fad5f79a2495b506edbebf46d23d9b596aafc2428566c8f76bd7"
+    },
+    "pptx": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pptx/SKILL.md",
+      "computedHash": "d6198c2f85d5d1c737d451b98ebacc3bbc187730c9a79252aa738ddb8d818455"
+    },
+    "professional-communication": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/professional-communication/SKILL.md",
+      "computedHash": "80bc71b76f37e46ae5628205c004a02c696d808ea63539ef7260c92222e1de98"
+    },
+    "qa-test-planner": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/qa-test-planner/SKILL.md",
+      "computedHash": "8ee0d30acc14528eff0cf0b953f5adb6185a8ed65a72a489ae9297ddfee000b0"
+    },
+    "react-dev": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/react-dev/SKILL.md",
+      "computedHash": "da3caa5f2bfd7274fad3f08524ff3ad4f427978773c3e77e7b14e44aaac31d78"
+    },
+    "react-useeffect": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/react-useeffect/SKILL.md",
+      "computedHash": "1fdf524f8335afac6f44d3460d6d20e71db9c1d14643e4a31ea17d6463504447"
+    },
+    "reducing-entropy": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/reducing-entropy/SKILL.md",
+      "computedHash": "9e43d852830ac1fac136bb6a961dc843be4b3c977157b44432eb599337270ac3"
+    },
+    "requirements-clarity": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/requirements-clarity/SKILL.md",
+      "computedHash": "a23371d1cd5d8cfdd62af76ce0cd462095d35dfd612587ed30528b4a54105771"
     },
     "sdf": {
       "source": "earthtojake/text-to-cad",
@@ -103,11 +403,35 @@
       "skillPath": "skills/sendcutsend/SKILL.md",
       "computedHash": "fe873fa46deb655bdaf403b10faa76d14a846168e9c91ad3fbb21adbd2cf5b0d"
     },
-    "skill-creator": {
-      "source": "composiohq/skills",
+    "session-handoff": {
+      "source": "softaworks/agent-toolkit",
       "sourceType": "github",
-      "skillPath": ".agents/skills/skill-creator/SKILL.md",
-      "computedHash": "1a2f4694384cb90d19d75354975dfb654d5c4ad230041667cb4b5b898474d7df"
+      "skillPath": "skills/session-handoff/SKILL.md",
+      "computedHash": "6401b3a156f4f756bb6faf54a633b3d092aea822115ef26858a8a6ce60b58a8e"
+    },
+    "ship-learn-next": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/ship-learn-next/SKILL.md",
+      "computedHash": "4df93407ee5223f5905178f134839dd0e100a5ddaba88c0e6a408dacb468d942"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "computedHash": "7e3c9cd74e9e2b4828527a857170e86310f2dab5ea8030a9043df2c7e6c88857"
+    },
+    "skill-judge": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/skill-judge/SKILL.md",
+      "computedHash": "14aa05080e7bb08f1da33a32c6e65e41ae67375f09747ab0a3432e3ffbf8506a"
+    },
+    "slack-gif-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/slack-gif-creator/SKILL.md",
+      "computedHash": "a36e1ceb3f07eb37bdc259f1bfb18e48cc0e809b2e1651cb2369286cd66b2107"
     },
     "srdf": {
       "source": "earthtojake/text-to-cad",
@@ -121,11 +445,53 @@
       "skillPath": "skills/step-parts/SKILL.md",
       "computedHash": "6e26d6919d0ab51d1a5e599fec66d1ec78b6cdbbab038c945f15bfb4056507b5"
     },
+    "template-skill": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "template/SKILL.md",
+      "computedHash": "daf176f2cd0030d321982d3e813fd1a794a0b4744c5a92d2931a37001bb40fb9"
+    },
+    "theme-factory": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/theme-factory/SKILL.md",
+      "computedHash": "e9ec1fe85faa729e9f3d1731cd7e4e485f98c099ccc7c1c0d198f473aa4b654a"
+    },
     "urdf": {
       "source": "earthtojake/text-to-cad",
       "sourceType": "github",
       "skillPath": "skills/urdf/SKILL.md",
       "computedHash": "971b4d504a1a6499bc7a9355bd5461ea78cd079c8519885d8edac4cf33fbf721"
+    },
+    "web-artifacts-builder": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-artifacts-builder/SKILL.md",
+      "computedHash": "fdddbe9bb720ea1aea9292ee513ec10b2a8f4912e2c343bdc246ab3febd7c9b3"
+    },
+    "web-to-markdown": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/web-to-markdown/SKILL.md",
+      "computedHash": "673a5f2d7a2917b0cb4c9f54e8b130f56de336c1562349310555ca2b0f1e7d42"
+    },
+    "webapp-testing": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/webapp-testing/SKILL.md",
+      "computedHash": "3f14af7f5690695209c22fbf8c8d133769a86d64892602c09bb13f135e14e857"
+    },
+    "writing-clearly-and-concisely": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/writing-clearly-and-concisely/SKILL.md",
+      "computedHash": "8941c21d5127d6f7d87cefd9b5175b96c9e0dec0c20c663d68b9cb4331847d0a"
+    },
+    "xlsx": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/xlsx/SKILL.md",
+      "computedHash": "cbaaabead69c5e03643f116cde6a396ad53f6da058da6eaa7bad6c4fbafe6026"
     }
   }
 }
