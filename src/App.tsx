@@ -111,7 +111,7 @@ export default function App() {
         <MainDashboard 
           designReport={designReport} 
           onReset={handleReset} 
-          user={auth.currentUser}
+          user={auth?.currentUser || null}
           onViewCatalogue={(wallId, roofId) => handleViewCatalogue(wallId, roofId, 'dashboard')}
           onSystemModuleClick={handleSystemModuleClick}
         />

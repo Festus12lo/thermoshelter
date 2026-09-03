@@ -10,7 +10,7 @@ interface UserProfilePanelProps {
 }
 
 export const UserProfilePanel: React.FC<UserProfilePanelProps> = ({ isOpen, onClose, onSignOut }) => {
-  const user = auth.currentUser;
+  const user = auth?.currentUser;
 
   return (
     <AnimatePresence>

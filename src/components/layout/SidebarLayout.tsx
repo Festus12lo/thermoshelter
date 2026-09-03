@@ -20,7 +20,7 @@ export const SidebarLayout: React.FC<SidebarLayoutProps> = ({
   onViewCatalogue 
 }) => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const user = auth.currentUser;
+  const user = auth?.currentUser;
 
   const navItems: PillNavItem[] = [
     { 
@@ -136,7 +136,7 @@ export const SidebarLayout: React.FC<SidebarLayoutProps> = ({
       <UserProfilePanel 
         isOpen={isProfileOpen} 
         onClose={() => setIsProfileOpen(false)} 
-        onSignOut={() => auth.signOut().then(() => setAppState('landing'))} 
+        onSignOut={() => auth?.signOut ? auth.signOut().then(() => setAppState('landing')) : setAppState('landing')} 
       />
 
     </div>

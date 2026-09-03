@@ -107,7 +107,7 @@ export const ThermalDashboard: React.FC<ThermalDashboardProps> = ({
   const freezeHours = comfort?.hours_below_0C ?? 0;
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: any = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -115,7 +115,7 @@ export const ThermalDashboard: React.FC<ThermalDashboardProps> = ({
     }
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 120, damping: 14 } }
   };
