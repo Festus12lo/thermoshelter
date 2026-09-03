@@ -12,15 +12,31 @@ import {
 } from 'lucide-react';
 
 export interface DuplexAppProps {
+  thermalObjective?: string;
   onViewCatalogue?: (wallId: string, roofId: string) => void;
 }
 
-export function DuplexApp({ onViewCatalogue }: DuplexAppProps) {
+export function DuplexApp({ thermalObjective, onViewCatalogue }: DuplexAppProps) {
   const [viewPreset, setViewPreset] = useState<ViewPreset>('isometric');
   const [renderMode, setRenderMode] = useState<RenderMode>('realistic');
   
-  const [activeRoof, setActiveRoof] = useState<MaterialOption>(ROOF_MATERIALS[0]);
-  const [activeWall, setActiveWall] = useState<MaterialOption>(WALL_MATERIALS[0]);
+  // Determine defaults based on thermal objective
+  const initialWall = React.useMemo(() => {
+    if (thermalObjective === 'winter_warmth') return WALL_MATERIALS.find(w => w.id === 'aerogel') || WALL_MATERIALS[0];
+    if (thermalObjective === 'summer_cooling') return WALL_MATERIALS.find(w => w.id === 'pir') || WALL_MATERIALS[0];
+    if (thermalObjective === 'balanced') return WALL_MATERIALS.find(w => w.id === 'hempcrete') || WALL_MATERIALS[0];
+    return WALL_MATERIALS[0];
+  }, [thermalObjective]);
+
+  const initialRoof = React.useMemo(() => {
+    if (thermalObjective === 'winter_warmth') return ROOF_MATERIALS.find(r => r.id === 'solar_absorbent') || ROOF_MATERIALS[0];
+    if (thermalObjective === 'summer_cooling') return ROOF_MATERIALS.find(r => r.id === 'cool_roof') || ROOF_MATERIALS[0];
+    if (thermalObjective === 'balanced') return ROOF_MATERIALS.find(r => r.id === 'galvanized') || ROOF_MATERIALS[0];
+    return ROOF_MATERIALS[0];
+  }, [thermalObjective]);
+
+  const [activeRoof, setActiveRoof] = useState<MaterialOption>(initialRoof);
+  const [activeWall, setActiveWall] = useState<MaterialOption>(initialWall);
 
   const [solarSettings, setSolarSettings] = useState<SolarSettings>({
     timeOfDay: 14.0,
@@ -74,15 +90,22 @@ export function DuplexApp({ onViewCatalogue }: DuplexAppProps) {
       }
     }
 
-    const baseSolarGain = (solarInt * (1 - (activeRoof.albedo || 0.5))) / 100;
-    const targetTemp = 24;
-    const tempDelta = baseT - targetTemp;
-    const wallRValue = activeWall.rValue || 1.0;
-    const insulationFactor = Math.min(wallRValue / 10, 0.9); 
-    const heatFromSun = baseSolarGain * (1 - insulationFactor); 
+    const ambient = baseT;
+    const solarDelta = (solarInt / 100) * (1 - (activeRoof.albedo || 0.5));
+    const comfortTarget = 24;
+    let ambientPull = ambient - comfortTarget; 
     
-    let indTemp = baseT - (tempDelta * insulationFactor) + heatFromSun;
-    const hLoss = (Math.abs(tempDelta) * 5) / (activeWall.rValue || 1.0);
+    // R-value buffers the ambient pull
+    const insulationBlock = Math.min((activeWall.rValue || 1.0) / 12, 0.9);
+    let baseIndoorTemp = comfortTarget + (ambientPull * (1 - insulationBlock));
+    
+    // Trapped solar heat is higher with better insulation
+    const trappedSolarHeat = solarDelta * (0.5 + insulationBlock);
+    
+    let indTemp = baseIndoorTemp + trappedSolarHeat;
+
+    const baseSolarGain = solarDelta * 5; // Simplified kWh/day estimation
+    const hLoss = (Math.abs(ambientPull) * 5) / (activeWall.rValue || 1.0);
 
     return {
       currentTemp: baseT.toFixed(1),

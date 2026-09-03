@@ -10,6 +10,7 @@ import { MaterialCatalogue } from './components/MaterialCatalogue';
 import { ProcurementPlatform } from './components/ProcurementPlatform';
 import { ResidentApp } from './residential/ResidentApp';
 import { DuplexApp } from './duplex/DuplexApp';
+import EmergencyApp from './emergency_shelter/App';
 import { ThermalDashboard } from './components/ThermalDashboard';
 import { SidebarLayout } from './components/layout/SidebarLayout';
 import { DeveloperDashboard } from './components/DeveloperDashboard';
@@ -17,10 +18,11 @@ import { generateDesign } from './api';
 import type { DesignRequestPayload } from './api';
 import { auth } from './lib/firebase';
 
-type AppState = 'landing' | 'login' | 'preview' | 'configuring' | 'loading' | 'design_details' | 'dashboard' | 'material_catalogue' | 'procurement' | 'resident_dashboard' | 'duplex_dashboard' | 'thermal_dashboard' | 'developer_view';
+type AppState = 'landing' | 'login' | 'preview' | 'configuring' | 'loading' | 'design_details' | 'dashboard' | 'material_catalogue' | 'procurement' | 'resident_dashboard' | 'duplex_dashboard' | 'emergency_dashboard' | 'thermal_dashboard' | 'developer_view';
 
 export default function App() {
   const [appState, setAppState] = useState<AppState>('landing');
+  const [thermalObjective, setThermalObjective] = useState<string>('balanced');
   const [designReport, setDesignReport] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const [catalogueOrigin, setCatalogueOrigin] = useState<AppState>('dashboard');
@@ -43,6 +45,8 @@ export default function App() {
       setAppState('resident_dashboard');
     } else if (id === 'duplex_dashboard') {
       setAppState('duplex_dashboard');
+    } else if (id === 'emergency_dashboard') {
+      setAppState('emergency_dashboard');
     }
   };
 
@@ -51,6 +55,8 @@ export default function App() {
   };
 
   const handleConfigurationSubmit = async (config: DesignRequestPayload) => {
+    setThermalObjective(config.thermal_objective);
+    
     if (config.purpose === 'resident') {
       setAppState('resident_dashboard');
       return;
@@ -229,6 +235,7 @@ export default function App() {
     return (
       <div className="w-screen h-screen">
         <ResidentApp 
+          thermalObjective={thermalObjective}
           onViewCatalogue={(wallId, roofId) => handleViewCatalogue(wallId, roofId, 'resident_dashboard')}
         />
         <button 
@@ -246,8 +253,24 @@ export default function App() {
     return (
       <div className="w-screen h-screen">
         <DuplexApp 
+          thermalObjective={thermalObjective}
           onViewCatalogue={(wallId, roofId) => handleViewCatalogue(wallId, roofId, 'duplex_dashboard')}
         />
+        <button 
+          onClick={() => setAppState('configuring')}
+          className="absolute top-4 left-4 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 hover:bg-slate-800 transition-colors group shadow-xl backdrop-blur-md"
+          title="Back"
+        >
+          <ArrowLeft className="w-5 h-5 text-slate-400 group-hover:text-white" />
+        </button>
+      </div>
+    );
+  }
+
+  if (appState === 'emergency_dashboard') {
+    return (
+      <div className="w-screen h-screen">
+        <EmergencyApp thermalObjective={thermalObjective} />
         <button 
           onClick={() => setAppState('configuring')}
           className="absolute top-4 left-4 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-slate-900 border border-slate-800 hover:bg-slate-800 transition-colors group shadow-xl backdrop-blur-md"

@@ -102,28 +102,23 @@ export const DesignDetails: React.FC<DesignDetailsProps> = ({ designReport, onDe
       }
     }
 
-    // Solar gain = Intensity * (1 - Albedo)
-    const baseSolarGain = (solarInt * (1 - (activeRoof.albedo || 0.5))) / 100; // Simplified to kWh/day approximation
+    const ambient = baseT;
+    const solarDelta = (solarInt / 100) * (1 - (activeRoof.albedo || 0.5));
+    const comfortTarget = 24;
+    let ambientPull = ambient - comfortTarget; 
     
-    // Insulation effectiveness (R-Value) resists heat flow.
-    const targetTemp = 21;
-    const tempDelta = baseT - targetTemp;
+    // R-value buffers the ambient pull
+    const insulationBlock = Math.min((activeWall.rValue || 1.0) / 12, 0.9);
+    let baseIndoorTemp = comfortTarget + (ambientPull * (1 - insulationBlock));
     
-    // Rough approximation: Temperature delta is reduced by R-value factor
-    const wallRValue = activeWall.rValue || 1.0;
-    const insulationFactor = Math.min(wallRValue / 10, 0.9); 
+    // Trapped solar heat is higher with better insulation
+    const trappedSolarHeat = solarDelta * (0.5 + insulationBlock);
     
-    // If we have solar gain, it adds heat
-    const heatFromSun = baseSolarGain * (1 - insulationFactor); 
-    
-    let indTemp = baseT - (tempDelta * insulationFactor) + heatFromSun;
-    
-    // Thermal mass check (Rammed earth delays heat)
-    if (activeWall.id === 'ceb' && solarInt > 500) {
-       indTemp -= 5; // Cools daytime peaks
-    }
+    let indTemp = baseIndoorTemp + trappedSolarHeat;
+    if (activeWall.id === 'wall-ceb' && solarInt > 500) indTemp -= 3; // Thermal mass damping
 
-    const hLoss = (Math.abs(tempDelta) * 5) / (activeWall.rValue || 1.0);
+    const baseSolarGain = solarDelta * 5; // Simplified kWh/day estimation
+    const hLoss = (Math.abs(ambientPull) * 5) / (activeWall.rValue || 1.0);
 
     return {
       currentTemp: baseT.toFixed(1),

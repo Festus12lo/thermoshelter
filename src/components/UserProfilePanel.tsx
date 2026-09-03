@@ -29,23 +29,37 @@ export const UserProfilePanel: React.FC<UserProfilePanelProps> = ({ isOpen, onCl
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '100%', opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-[#0A0E17] border-l border-white/10 z-[2001] flex flex-col shadow-2xl"
+            className="fixed right-0 top-0 bottom-0 w-full max-w-md border-l border-white/10 z-[2001] flex flex-col shadow-2xl overflow-hidden"
           >
+            {/* Video Background for the panel */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover opacity-60 mix-blend-screen"
+              >
+                <source src="/bgv1.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-[#0A0E17]/60 backdrop-blur-md"></div>
+            </div>
+
             {/* Header */}
-            <div className="p-6 border-b border-white/10 flex items-center justify-between bg-black/20">
-              <h2 className="text-xl font-bold font-sans text-white">Command Center</h2>
+            <div className="p-6 border-b border-white/10 flex items-center justify-between bg-black/20 relative z-10">
+              <h2 className="text-xl font-bold font-sans text-white drop-shadow-md">Command Center</h2>
               <button 
                 onClick={onClose}
-                className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+                className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/20 backdrop-blur-lg flex items-center justify-center text-slate-200 hover:text-white transition-all border border-white/10"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Profile Info */}
-            <div className="p-8 text-center border-b border-white/5 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-5">
-                <Hexagon className="w-48 h-48" />
+            <div className="p-8 text-center border-b border-white/5 relative overflow-hidden z-10">
+              <div className="absolute top-0 right-0 p-4 opacity-10">
+                <Hexagon className="w-48 h-48 text-cyan-500" />
               </div>
               <div className="relative z-10">
                 <div className="w-24 h-24 mx-auto bg-gradient-to-tr from-cyan-500 to-indigo-500 rounded-full p-1 mb-4 shadow-[0_0_30px_rgba(34,211,238,0.3)]">
@@ -65,7 +79,7 @@ export const UserProfilePanel: React.FC<UserProfilePanelProps> = ({ isOpen, onCl
             </div>
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+            <div className="flex-1 overflow-y-auto p-6 space-y-6 relative z-10">
               
               <div className="space-y-3">
                 <h4 className="text-xs font-bold uppercase tracking-widest text-slate-500 font-sans">Recent Activity</h4>
@@ -113,7 +127,7 @@ export const UserProfilePanel: React.FC<UserProfilePanelProps> = ({ isOpen, onCl
             </div>
 
             {/* Footer */}
-            <div className="p-6 border-t border-white/5 bg-black/20">
+            <div className="p-6 border-t border-white/5 bg-black/20 relative z-10">
               <button 
                 onClick={onSignOut}
                 className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-red-500/10 text-red-400 font-bold hover:bg-red-500/20 transition-colors border border-red-500/20 hover:border-red-500/40"

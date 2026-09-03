@@ -26,8 +26,28 @@ const INITIAL_CONFIG: ShelterConfig = {
   roofCutaway: false,
 };
 
-export default function App() {
-  const [config, setConfig] = useState<ShelterConfig>(INITIAL_CONFIG);
+export default function App({ thermalObjective }: { thermalObjective?: string }) {
+  const [config, setConfig] = useState<ShelterConfig>(() => {
+    let wallMaterialId = INITIAL_CONFIG.wallMaterialId;
+    let roofMaterialId = INITIAL_CONFIG.roofMaterialId;
+    
+    if (thermalObjective === 'winter_warmth') {
+      wallMaterialId = 'aerogel';
+      roofMaterialId = 'solar_absorbent';
+    } else if (thermalObjective === 'summer_cooling') {
+      wallMaterialId = 'pir';
+      roofMaterialId = 'cool_roof';
+    } else if (thermalObjective === 'balanced') {
+      wallMaterialId = 'hempcrete';
+      roofMaterialId = 'galvanized';
+    }
+
+    return {
+      ...INITIAL_CONFIG,
+      wallMaterialId,
+      roofMaterialId
+    };
+  });
   const [renderMode, setRenderMode] = useState<RenderMode>('lit');
   const [environment, setEnvironment] = useState<EnvironmentPreset>('day');
   const [cameraPreset, setCameraPreset] = useState<CameraPreset>('hero');

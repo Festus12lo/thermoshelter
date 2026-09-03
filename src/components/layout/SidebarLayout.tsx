@@ -85,12 +85,16 @@ export const SidebarLayout: React.FC<SidebarLayoutProps> = ({
       {/* Top Header Layer */}
       <header className="absolute top-0 left-0 right-0 h-20 px-6 lg:px-12 flex justify-between items-center z-40 pointer-events-none">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-cyan-500/20 rounded-xl flex items-center justify-center border border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-            <Activity className="w-5 h-5 text-cyan-400" />
-          </div>
-          <h1 className="text-xl font-bold font-sans tracking-tight text-white hidden sm:block">
-            Thermo<span className="text-cyan-400">Shelter</span>
-          </h1>
+          {appState === 'dashboard' && (
+            <>
+              <div className="w-10 h-10 bg-cyan-500/20 rounded-xl flex items-center justify-center border border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                <Activity className="w-5 h-5 text-cyan-400" />
+              </div>
+              <h1 className="text-xl font-bold font-sans tracking-tight text-white hidden sm:block">
+                Thermo<span className="text-cyan-400">Shelter</span>
+              </h1>
+            </>
+          )}
         </div>
 
         {/* Profile Avatar Button */}

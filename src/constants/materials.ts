@@ -28,10 +28,10 @@ export const WALL_MATERIALS: MaterialDef[] = [
     rValue: 4.2,
     thermalMass: 'Low',
     ecoScore: 'Poor',
-    imageUrl: '/materials/puf.jpg',
+    imageUrl: '/materials/eps.jpg',
     vendors: [
-      { id: 'w1', name: 'RapidShelter Mfg', pricePerSqm: 2000.00, deliveryDays: 2, inStock: true, url: '#' },
-      { id: 'w2', name: 'Global Relief Supply', pricePerSqm: 2240.00, deliveryDays: 1, inStock: true, url: '#' }
+      { id: 'w1', name: 'RapidShelter Mfg', pricePerSqm: 2000.00, deliveryDays: 2, inStock: true, url: 'https://dir.indiamart.com/search.mp?ss=eps+panels' },
+      { id: 'w2', name: 'Global Relief Supply', pricePerSqm: 2240.00, deliveryDays: 1, inStock: true, url: 'https://dir.indiamart.com/search.mp?ss=insulated+sandwich+panels' }
     ],
     hex: '#c8c2b7'
   },
@@ -42,9 +42,9 @@ export const WALL_MATERIALS: MaterialDef[] = [
     rValue: 6.0,
     thermalMass: 'Low',
     ecoScore: 'Moderate',
-    imageUrl: '/materials/aac_blocks.jpg',
+    imageUrl: '/materials/pir.jpg',
     vendors: [
-      { id: 'w3', name: 'InsulCore', pricePerSqm: 3600.00, deliveryDays: 5, inStock: true, url: '#' },
+      { id: 'w3', name: 'InsulCore', pricePerSqm: 3600.00, deliveryDays: 5, inStock: true, url: 'https://dir.indiamart.com/search.mp?ss=pir+foam+board' },
     ],
     hex: '#cbd5e1'
   },
@@ -55,9 +55,9 @@ export const WALL_MATERIALS: MaterialDef[] = [
     rValue: 10.5,
     thermalMass: 'Very Low',
     ecoScore: 'Good',
-    imageUrl: '/materials/cavity_wall.jpg',
+    imageUrl: '/materials/aerogel.jpg',
     vendors: [
-      { id: 'w4', name: 'AeroTech Textiles', pricePerSqm: 12000.00, deliveryDays: 14, inStock: false, url: '#' }
+      { id: 'w4', name: 'AeroTech Textiles', pricePerSqm: 12000.00, deliveryDays: 14, inStock: false, url: 'https://dir.indiamart.com/search.mp?ss=aerogel+insulation' }
     ],
     hex: '#e2e8f0'
   },
@@ -68,9 +68,9 @@ export const WALL_MATERIALS: MaterialDef[] = [
     rValue: 2.5,
     thermalMass: 'Medium',
     ecoScore: 'Excellent',
-    imageUrl: '/materials/ceb.jpg',
+    imageUrl: '/materials/hempcrete.jpg',
     vendors: [
-      { id: 'w5', name: 'EcoBlock Solutions', pricePerSqm: 5200.00, deliveryDays: 10, inStock: true, url: '#' }
+      { id: 'w5', name: 'EcoBlock Solutions', pricePerSqm: 5200.00, deliveryDays: 10, inStock: true, url: 'https://dir.indiamart.com/search.mp?ss=hempcrete+blocks' }
     ],
     hex: '#bbaea0'
   },
@@ -81,9 +81,9 @@ export const WALL_MATERIALS: MaterialDef[] = [
     rValue: 1.5,
     thermalMass: 'Variable',
     ecoScore: 'Good',
-    imageUrl: '/materials/flyash.jpg',
+    imageUrl: '/materials/hollow_polymer.jpg',
     vendors: [
-      { id: 'w6', name: 'PolyBuild Systems', pricePerSqm: 2800.00, deliveryDays: 4, inStock: true, url: '#' }
+      { id: 'w6', name: 'PolyBuild Systems', pricePerSqm: 2800.00, deliveryDays: 4, inStock: true, url: 'https://dir.indiamart.com/search.mp?ss=hollow+plastic+panels' }
     ],
     hex: '#48525b'
   }
@@ -99,7 +99,7 @@ export const ROOF_MATERIALS: MaterialDef[] = [
     ecoScore: 'Moderate',
     imageUrl: '/materials/galvanized.jpg',
     vendors: [
-      { id: 'r1', name: 'SteelWorks Direct', pricePerSqm: 960.00, deliveryDays: 1, inStock: true, url: '#' }
+      { id: 'r1', name: 'SteelWorks Direct', pricePerSqm: 960.00, deliveryDays: 1, inStock: true, url: 'https://dir.indiamart.com/search.mp?ss=corrugated+galvanized+iron+sheets' }
     ],
     hex: '#94a3b8'
   },
@@ -112,7 +112,7 @@ export const ROOF_MATERIALS: MaterialDef[] = [
     ecoScore: 'Good',
     imageUrl: '/materials/cool_roof.jpg',
     vendors: [
-      { id: 'r2', name: 'ThermoShield', pricePerSqm: 2800.00, deliveryDays: 3, inStock: true, url: '#' }
+      { id: 'r2', name: 'ThermoShield', pricePerSqm: 2800.00, deliveryDays: 3, inStock: true, url: 'https://dir.indiamart.com/search.mp?ss=cool+roof+coating' }
     ],
     hex: '#ffffff'
   },
@@ -123,9 +123,9 @@ export const ROOF_MATERIALS: MaterialDef[] = [
     albedo: 0.95,
     thermalMass: 'Low',
     ecoScore: 'Moderate',
-    imageUrl: '/materials/slate.jpg',
+    imageUrl: '/materials/low_e_alu.jpg',
     vendors: [
-      { id: 'r3', name: 'AluSpec', pricePerSqm: 4400.00, deliveryDays: 5, inStock: true, url: '#' }
+      { id: 'r3', name: 'AluSpec', pricePerSqm: 4400.00, deliveryDays: 5, inStock: true, url: 'https://dir.indiamart.com/search.mp?ss=aluminum+roofing+sheets' }
     ],
     hex: '#f8fafc'
   },
@@ -136,9 +136,9 @@ export const ROOF_MATERIALS: MaterialDef[] = [
     albedo: 0.10,
     thermalMass: 'Low',
     ecoScore: 'Moderate',
-    imageUrl: '/materials/terracotta.jpg',
+    imageUrl: '/materials/solar_absorbent.jpg',
     vendors: [
-      { id: 'r4', name: 'ArcticShelter', pricePerSqm: 3200.00, deliveryDays: 7, inStock: true, url: '#' }
+      { id: 'r4', name: 'ArcticShelter', pricePerSqm: 3200.00, deliveryDays: 7, inStock: true, url: 'https://dir.indiamart.com/search.mp?ss=epdm+rubber+roofing' }
     ],
     hex: '#1e293b'
   }

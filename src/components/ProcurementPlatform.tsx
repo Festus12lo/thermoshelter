@@ -21,19 +21,25 @@ export const ProcurementPlatform: React.FC<ProcurementPlatformProps> = ({ onBack
   const selectedWall = WALL_MATERIALS.find(m => m.id === selectedWallId) || WALL_MATERIALS[2];
   const selectedRoof = ROOF_MATERIALS.find(m => m.id === selectedRoofId) || ROOF_MATERIALS[2];
 
-  const renderMaterialCard = (mat: MaterialDef, isSelected: boolean, type: 'Wall' | 'Roof') => {
+  const renderMaterialCard = (mat: MaterialDef, isSelected: boolean, type: 'Wall' | 'Roof', index: number = 0) => {
     const sortedVendors = getSortedVendors(mat);
     const bestPrice = sortedVendors[0];
 
     return (
-      <div key={mat.id} className={`flex flex-col md:flex-row gap-6 bg-black/40 backdrop-blur-xl border rounded-2xl p-6 transition-all ${isSelected ? 'border-indigo-500/50 shadow-[0_0_30px_-5px_rgba(99,102,241,0.15)]' : 'border-white/10'}`}>
+      <motion.div 
+        key={mat.id} 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] }}
+        className={`flex flex-col md:flex-row gap-6 bg-black/40 backdrop-blur-xl border rounded-2xl p-6 transition-all duration-500 hover:border-indigo-500/40 group ${isSelected ? 'border-indigo-500/50 shadow-[0_0_30px_-5px_rgba(99,102,241,0.15)]' : 'border-white/10'}`}
+      >
         {/* Product Image & Info */}
         <div className="w-full md:w-1/3 flex flex-col gap-4">
-          <div className="w-full h-48 rounded-xl overflow-hidden relative">
-            <img src={mat.imageUrl} alt={mat.name} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
+          <div className="w-full h-48 rounded-xl overflow-hidden relative shadow-lg group-hover:shadow-[0_0_30px_-5px_rgba(99,102,241,0.25)] transition-shadow duration-500">
+            <img src={mat.imageUrl} alt={mat.name} className="w-full h-full object-cover transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90"></div>
             <div className="absolute top-2 left-2 flex gap-2">
-              <span className="bg-black/70 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold tracking-widest uppercase border border-white/10 text-slate-200">
+              <span className="bg-black/70 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold tracking-widest uppercase border border-white/10 text-slate-200 shadow-lg">
                 {type} System
               </span>
               {isSelected && (
@@ -45,12 +51,18 @@ export const ProcurementPlatform: React.FC<ProcurementPlatformProps> = ({ onBack
             </div>
           </div>
           <div>
-            <h3 className="text-xl font-bold text-white">{mat.name}</h3>
-            <p className="text-sm text-slate-400 mt-1">{mat.desc}</p>
-            <div className="flex gap-4 mt-3 pt-3 border-t border-slate-800">
+            <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors duration-300">{mat.name}</h3>
+            <p className="text-sm text-slate-400 mt-1 leading-relaxed">{mat.desc}</p>
+            <div className="flex gap-4 mt-4 pt-4 border-t border-slate-800/80">
               <div className="text-xs font-mono">
-                <span className="text-slate-500">Spec: </span>
-                <span className="text-indigo-400 font-bold">{type === 'Wall' ? `R-${mat.rValue}` : `Albedo ${mat.albedo}`}</span>
+                <span className="text-slate-500 uppercase tracking-widest text-[9px] block mb-1">Spec Rating</span>
+                <span className="text-indigo-400 font-bold px-2 py-1 bg-indigo-500/10 rounded-md border border-indigo-500/20">{type === 'Wall' ? `R-${mat.rValue}` : `Albedo ${mat.albedo}`}</span>
+              </div>
+              <div className="text-xs font-mono">
+                <span className="text-slate-500 uppercase tracking-widest text-[9px] block mb-1">Eco Score</span>
+                <span className={`font-bold px-2 py-1 rounded-md border ${mat.ecoScore === 'Excellent' || mat.ecoScore === 'Good' ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' : 'text-orange-400 bg-orange-500/10 border-orange-500/20'}`}>
+                  {mat.ecoScore}
+                </span>
               </div>
             </div>
           </div>
@@ -59,54 +71,70 @@ export const ProcurementPlatform: React.FC<ProcurementPlatformProps> = ({ onBack
         {/* Vendor Comparison */}
         <div className="w-full md:w-2/3 flex flex-col">
           <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-            <ShoppingCart className="w-4 h-4" /> Available Sources (Lowest to Highest)
+            <ShoppingCart className="w-4 h-4 text-indigo-500" /> Available Sources (Lowest to Highest)
           </h4>
           
           <div className="flex flex-col gap-3 flex-1">
             {sortedVendors.map((vendor, index) => (
-              <div key={vendor.id} className={`flex items-center justify-between p-4 rounded-xl border ${index === 0 ? 'bg-indigo-950/20 border-indigo-900/50' : 'bg-slate-900/40 border-slate-800/50'}`}>
-                <div className="flex items-center gap-4">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${index === 0 ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'}`}>
+              <div key={vendor.id} className={`flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${index === 0 ? 'bg-indigo-950/20 border-indigo-900/50 hover:border-indigo-500/50 hover:bg-indigo-950/40 hover:shadow-[0_5px_20px_rgba(99,102,241,0.15)]' : 'bg-slate-900/40 border-slate-800/50 hover:bg-slate-800/60 hover:border-slate-600'}`}>
+                <div className="flex items-center gap-4 mb-3 sm:mb-0">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 ${index === 0 ? 'bg-indigo-600 text-white shadow-[0_0_10px_rgba(99,102,241,0.5)]' : 'bg-slate-800 text-slate-400'}`}>
                     #{index + 1}
                   </div>
                   <div>
-                    <div className="font-bold text-slate-200">{vendor.name}</div>
-                    <div className="flex items-center gap-3 text-xs mt-1">
-                      <span className={`flex items-center gap-1 ${vendor.inStock ? 'text-emerald-400' : 'text-rose-400'}`}>
+                    <div className="font-bold text-slate-200 text-sm">{vendor.name}</div>
+                    <div className="flex items-center gap-3 text-[11px] mt-1">
+                      <span className={`flex items-center gap-1 font-medium ${vendor.inStock ? 'text-emerald-400' : 'text-rose-400'}`}>
                         {vendor.inStock ? 'In Stock' : 'Out of Stock'}
                       </span>
-                      <span className="text-slate-500">•</span>
+                      <span className="text-slate-600">•</span>
                       <span className="flex items-center gap-1 text-slate-400">
-                        <Truck className="w-3 h-3" /> {vendor.deliveryDays} days
+                        <Truck className="w-3 h-3 text-slate-500" /> {vendor.deliveryDays} days
                       </span>
                     </div>
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-4 sm:gap-6 w-full sm:w-auto justify-between sm:justify-end">
                   <div className="text-right">
-                    <div className="text-lg font-bold text-white">₹{vendor.pricePerSqm.toFixed(2)}</div>
-                    <div className="text-[10px] text-slate-500 uppercase tracking-widest">per sq.m</div>
+                    <div className="text-lg font-bold text-white">₹{vendor.pricePerSqm.toLocaleString('en-IN', {minimumFractionDigits: 2})}</div>
+                    <div className="text-[9px] text-slate-500 uppercase tracking-widest mt-0.5">per sq.m</div>
                   </div>
                   <a 
                     href={vendor.url}
-                    onClick={(e) => e.preventDefault()} // Mock link
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${index === 0 ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg' : 'bg-slate-800 hover:bg-slate-700 text-slate-300'}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${index === 0 ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_15px_rgba(99,102,241,0.4)] hover:shadow-[0_0_25px_rgba(99,102,241,0.6)]' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white'}`}
                   >
-                    View <ExternalLink className="w-3 h-3" />
+                    View <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   };
 
   return (
-    <div className="min-h-full bg-slate-950 text-slate-200 overflow-y-auto custom-scrollbar p-6 md:p-12 relative">
-      <div className="max-w-7xl mx-auto space-y-8 pb-20">
+    <div className="h-full w-full bg-transparent text-slate-200 overflow-y-auto custom-scrollbar relative">
+      {/* Video Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-50 mix-blend-screen"
+        >
+          <source src="/bgv1.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-md"></div>
+      </div>
+
+      <div className="p-6 md:p-12 relative z-10">
+        <div className="max-w-7xl mx-auto space-y-8 pb-20">
         
         {/* Header */}
         <div className="flex items-center gap-6 pb-6 border-b border-slate-800">
@@ -169,17 +197,18 @@ export const ProcurementPlatform: React.FC<ProcurementPlatformProps> = ({ onBack
               >
                 <div className="space-y-6">
                   <h2 className="text-lg font-bold text-slate-300 uppercase tracking-widest border-l-2 border-indigo-500 pl-3">Wall Systems</h2>
-                  {WALL_MATERIALS.map(mat => renderMaterialCard(mat, mat.id === selectedWallId, 'Wall'))}
+                  {WALL_MATERIALS.map((mat, index) => renderMaterialCard(mat, mat.id === selectedWallId, 'Wall', index))}
                 </div>
                 <div className="space-y-6">
                   <h2 className="text-lg font-bold text-slate-300 uppercase tracking-widest border-l-2 border-indigo-500 pl-3">Roofing Systems</h2>
-                  {ROOF_MATERIALS.map(mat => renderMaterialCard(mat, mat.id === selectedRoofId, 'Roof'))}
+                  {ROOF_MATERIALS.map((mat, index) => renderMaterialCard(mat, mat.id === selectedRoofId, 'Roof', index))}
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
 
+      </div>
       </div>
     </div>
   );

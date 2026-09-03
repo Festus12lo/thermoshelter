@@ -20,8 +20,24 @@ export const MaterialCatalogue: React.FC<MaterialCatalogueProps> = ({ onBack, on
   const selectedRoof = ROOFS.find((m: any) => m.id === selectedRoofId) || ROOFS[0];
 
   return (
-    <div className="min-h-full bg-slate-950 text-slate-200 overflow-y-auto custom-scrollbar p-6 md:p-12 relative">
-      <div className="max-w-6xl mx-auto space-y-12 pb-20">
+    <div className="h-full w-full bg-transparent text-slate-200 overflow-y-auto custom-scrollbar relative">
+      
+      {/* Video Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-50 mix-blend-screen"
+        >
+          <source src="/bgv1.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-md"></div>
+      </div>
+
+      <div className="p-6 md:p-12 relative z-10">
+        <div className="max-w-6xl mx-auto space-y-12 pb-20">
         
         {/* Header */}
         <div className="flex items-center gap-6 pb-6 border-b border-slate-800">
@@ -160,6 +176,7 @@ export const MaterialCatalogue: React.FC<MaterialCatalogueProps> = ({ onBack, on
           </div>
         </section>
 
+      </div>
       </div>
     </div>
   );

@@ -32,14 +32,17 @@ export const ConfigurationWizard: React.FC<ConfigurationWizardProps> = ({ onSubm
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center p-6 relative overflow-hidden font-sans">
-      {/* Matte / Stealth Background Grid + GIF */}
-      <img 
-        src="https://media.giphy.com/media/l41YcOcbKiLQ5sEhy/giphy.gif" 
-        alt="tech background" 
-        className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none mix-blend-screen" 
-      />
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none mix-blend-screen"
+      >
+        <source src="/bgv1.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 pointer-events-none mix-blend-overlay"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900/40 via-[#0a0a0a] to-[#0a0a0a] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a] pointer-events-none"></div>
 
       <div className="relative z-10 w-full max-w-5xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row">
         

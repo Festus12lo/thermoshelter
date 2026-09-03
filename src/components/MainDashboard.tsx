@@ -301,7 +301,7 @@ export const MainDashboard: React.FC<MainDashboardProps> = ({ designReport, onRe
                   </button>
                 </div>
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <button 
                     onClick={() => { setActiveModal(null); onSystemModuleClick?.('resident_dashboard'); }}
                     className="group relative p-6 rounded-xl border border-white/10 bg-black/40 hover:bg-[#2DD4BF]/10 hover:border-[#2DD4BF]/50 transition-all duration-300 text-left overflow-hidden"
@@ -320,6 +320,16 @@ export const MainDashboard: React.FC<MainDashboardProps> = ({ designReport, onRe
                     <span className="material-symbols-outlined text-[32px] text-[#ECA078] mb-3">domain</span>
                     <h4 className="font-semibold text-white">Duplex</h4>
                     <p className="text-xs text-[#8B9BB4] mt-1 font-mono uppercase">Emergency Relief</p>
+                  </button>
+
+                  <button 
+                    onClick={() => { setActiveModal(null); onSystemModuleClick?.('emergency_dashboard'); }}
+                    className="group relative p-6 rounded-xl border border-white/10 bg-black/40 hover:bg-rose-500/10 hover:border-rose-500/50 transition-all duration-300 text-left overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent,rgba(255,255,255,0.03),transparent)] translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                    <span className="material-symbols-outlined text-[32px] text-rose-500 mb-3">medical_services</span>
+                    <h4 className="font-semibold text-white">Emergency</h4>
+                    <p className="text-xs text-[#8B9BB4] mt-1 font-mono uppercase">Rapid Deploy</p>
                   </button>
                 </div>
               </div>

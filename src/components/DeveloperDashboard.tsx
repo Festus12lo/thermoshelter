@@ -33,8 +33,18 @@ export const DeveloperDashboard: React.FC = () => {
   return (
     <div className="w-full h-full overflow-y-auto bg-transparent text-white selection:bg-cyan-500/30">
       
-      {/* Background Gradients (Optimized to prevent GPU crash) */}
-      <div className="fixed inset-0 pointer-events-none z-0">
+      {/* Background Gradients & Video */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-50 mix-blend-screen"
+        >
+          <source src="/bgv1.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-[#0A0E17]/60 backdrop-blur-sm"></div>
         <div className="absolute top-0 left-1/4 w-[80vw] max-w-[800px] h-[80vw] max-h-[800px] bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.15)_0%,transparent_70%)] rounded-full -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-1/4 w-[60vw] max-w-[600px] h-[60vw] max-h-[600px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15)_0%,transparent_70%)] rounded-full translate-y-1/2"></div>
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] opacity-20 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]"></div>
